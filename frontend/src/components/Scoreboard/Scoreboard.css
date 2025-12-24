@@ -1,0 +1,16 @@
+#scoreboard-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+.board {
+  width: 50%;
+  flex: 1;
+}
+
+.separator {
+  width: 6px;
+  height: 100%;
+  background-color: black;
+}
