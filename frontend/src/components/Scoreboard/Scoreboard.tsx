@@ -7,9 +7,9 @@ export function Scoreboard() {
 
   return (
     <div id='scoreboard-container'>
-      <Board color={leftBoardColor} />
+      <Board color={leftBoardColor} name='Keshav' />
       <div className='separator'></div>
-      <Board color={rightBoardColor} />
+      <Board color={rightBoardColor} name='Varoun' />
     </div>
   );
 }
