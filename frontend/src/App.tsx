@@ -1,10 +1,12 @@
 import { Scoreboard } from './components';
-import { BoardColorProvider } from './context';
+import { BoardColorProvider, BoardScoreProvider } from './context';
 
 function App() {
   return (
     <BoardColorProvider>
-      <Scoreboard />
+      <BoardScoreProvider>
+        <Scoreboard />
+      </BoardScoreProvider>
     </BoardColorProvider>
   );
 }

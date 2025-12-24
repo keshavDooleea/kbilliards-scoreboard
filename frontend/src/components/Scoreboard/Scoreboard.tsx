@@ -1,15 +1,16 @@
-import { useBoardColor } from '../../context';
+import { useBoardColor, useBoardScore } from '../../context';
 import { Board } from '../Board';
 import './Scoreboard.css';
 
 export function Scoreboard() {
-  const { leftBoardColor, rightBoardColor } = useBoardColor();
+  const { lColor, rColor } = useBoardColor();
+  const { lScore, rScore } = useBoardScore();
 
   return (
     <div id='scoreboard-container'>
-      <Board color={leftBoardColor} name='Keshav' />
+      <Board color={lColor} score={lScore} name='Keshav' />
       <div className='separator'></div>
-      <Board color={rightBoardColor} name='Varoun' />
+      <Board color={rColor} score={rScore} name='Varoun' />
     </div>
   );
 }

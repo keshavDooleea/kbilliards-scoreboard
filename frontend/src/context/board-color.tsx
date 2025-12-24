@@ -9,8 +9,8 @@ import {
 import { BALLS_COLORS } from '../infrastructure';
 
 interface IBoardColorContextType {
-  leftBoardColor: string;
-  rightBoardColor: string;
+  lColor: string;
+  rColor: string;
 }
 
 interface IBoardColorProviderProps {
@@ -41,8 +41,8 @@ export function BoardColorProvider({ children }: IBoardColorProviderProps) {
   }, []);
 
   const value: IBoardColorContextType = {
-    leftBoardColor,
-    rightBoardColor,
+    lColor: leftBoardColor,
+    rColor: rightBoardColor,
   };
 
   return (
