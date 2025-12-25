@@ -1,1 +1,1 @@
-export * from './Scoreboard/Scoreboard';
+export * from './Main';

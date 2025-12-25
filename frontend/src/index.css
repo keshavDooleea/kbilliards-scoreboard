@@ -14,3 +14,24 @@ body {
   background-color: var(--bkgColor);
   overflow: hidden;
 }
+
+.board-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+.separator {
+  width: 6px;
+  height: 100%;
+  background-color: var(--bkgColor);
+}
+
+.board {
+  width: 50%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,16 +1,17 @@
-import { useBoardColor, useBoardScore } from '../../context';
-import { Board } from '../Board';
+import { useBoardColor, useBoardScore, usePlayerName } from '../../context';
+import { Board } from './Board';
 import './Scoreboard.css';
 
 export function Scoreboard() {
   const { lColor, rColor } = useBoardColor();
   const { lScore, rScore } = useBoardScore();
+  const { lName, rName } = usePlayerName();
 
   return (
-    <div id='scoreboard-container'>
-      <Board color={lColor} score={lScore} name='k' isLeft={true} />
+    <div className='board-container'>
+      <Board name={lName} color={lColor} score={lScore} isLeft={true} />
       <div className='separator'></div>
-      <Board color={rColor} score={rScore} name='v' isLeft={false} />
+      <Board name={rName} color={rColor} score={rScore} isLeft={false} />
     </div>
   );
 }

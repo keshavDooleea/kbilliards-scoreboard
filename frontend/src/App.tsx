@@ -1,19 +1,22 @@
-import { Scoreboard } from './components';
 import {
   BoardColorProvider,
   BoardScoreProvider,
   NewGameProvider,
+  PlayerNameProvider,
 } from './context';
+import { Main } from './components';
 
 function App() {
   return (
-    <BoardScoreProvider>
-      <NewGameProvider>
-        <BoardColorProvider>
-          <Scoreboard />
-        </BoardColorProvider>
-      </NewGameProvider>
-    </BoardScoreProvider>
+    <PlayerNameProvider>
+      <BoardScoreProvider>
+        <NewGameProvider>
+          <BoardColorProvider>
+            <Main />
+          </BoardColorProvider>
+        </NewGameProvider>
+      </BoardScoreProvider>
+    </PlayerNameProvider>
   );
 }
 

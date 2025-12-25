@@ -1,11 +1,6 @@
-import {
-  createContext,
-  useContext,
-  useState,
-  ReactNode,
-  useCallback,
-} from 'react';
+import { createContext, useContext, useState, useCallback } from 'react';
 import { useScoreStorage } from '../hooks';
+import { IChildrenProviderProps } from '.';
 
 interface IBoardScoreContextType {
   lScore: number;
@@ -17,13 +12,9 @@ interface IBoardScoreContextType {
   isBothNil: () => boolean;
 }
 
-interface IBoardScoreProviderProps {
-  children: ReactNode;
-}
-
 const BoardScoreContext = createContext<IBoardScoreContextType | null>(null);
 
-export function BoardScoreProvider({ children }: IBoardScoreProviderProps) {
+export function BoardScoreProvider({ children }: IChildrenProviderProps) {
   const {
     getLScore,
     getRScore,

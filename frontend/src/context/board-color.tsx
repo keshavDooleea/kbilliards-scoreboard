@@ -3,23 +3,19 @@ import {
   useContext,
   useState,
   useCallback,
-  ReactNode,
   useEffect,
 } from 'react';
 import { BALLS_COLORS } from '../infrastructure';
+import { IChildrenProviderProps } from '.';
 
 interface IBoardColorContextType {
   lColor: string;
   rColor: string;
 }
 
-interface IBoardColorProviderProps {
-  children: ReactNode;
-}
-
 const BoardColorContext = createContext<IBoardColorContextType | null>(null);
 
-export function BoardColorProvider({ children }: IBoardColorProviderProps) {
+export function BoardColorProvider({ children }: IChildrenProviderProps) {
   const generateColor = useCallback((): string => {
     const randomIndex = Math.floor(Math.random() * BALLS_COLORS.length);
     return BALLS_COLORS[randomIndex];

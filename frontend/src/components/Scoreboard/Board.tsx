@@ -1,5 +1,4 @@
 import { useBoardSwipe } from '../../hooks';
-import './Board.css';
 
 interface IBoard {
   color: string;
