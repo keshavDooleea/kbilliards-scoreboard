@@ -13,10 +13,8 @@ export function Board({ color, name, onClick }: IBoard) {
     <div
       className={`board ${isClicked ? 'clicked' : ''}`}
       style={{ backgroundColor: color }}
-      onClick={handleClick}>
-      <div className='board-name' contentEditable>
-        {name}
-      </div>
+      onDoubleClick={handleClick}>
+      <div className='board-name'>{name}</div>
       <div className='board-score board-ball'>
         <img src={`balls/${name.toLowerCase()}.png`} alt={`${name} ball`} />
       </div>
