@@ -17,7 +17,7 @@
   font-family: 'Chewy', system-ui;
   color: rgba(0, 0, 0, 0.4);
   letter-spacing: 1.5px;
-  font-size: 3.5em;
+  font-size: 2em;
   user-select: none;
   font-weight: bold;
 }
@@ -29,7 +29,7 @@
 .board-score {
   font-family: 'Finger Paint', sans-serif;
   font-weight: 400;
-  font-size: 22rem;
+  font-size: 10rem;
   margin: 0;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2);
   user-select: none;
