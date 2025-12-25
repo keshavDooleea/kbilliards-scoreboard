@@ -1,4 +1,11 @@
-import { createContext, useContext, useState, ReactNode, useCallback } from 'react';
+import {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useCallback,
+  useEffect,
+} from 'react';
 
 interface IBoardScoreContextType {
   lScore: number;
@@ -16,8 +23,16 @@ interface IBoardScoreProviderProps {
 const BoardScoreContext = createContext<IBoardScoreContextType | null>(null);
 
 export function BoardScoreProvider({ children }: IBoardScoreProviderProps) {
-  const [lScore, setLScore] = useState<number>(0);
-  const [rScore, setRScore] = useState<number>(0);
+  const getInitialScore = (key: string): number => {
+    const storageScore = localStorage.getItem(key);
+    return storageScore ? +storageScore : 0;
+  };
+
+  const lStorageKey = 'lScore';
+  const rStorageKey = 'rScore';
+
+  const [lScore, setLScore] = useState<number>(getInitialScore(lStorageKey));
+  const [rScore, setRScore] = useState<number>(getInitialScore(rStorageKey));
 
   const incrementLeft = useCallback(() => {
     setLScore((prev) => prev + 1);
@@ -34,6 +49,14 @@ export function BoardScoreProvider({ children }: IBoardScoreProviderProps) {
   const decrementRight = useCallback(() => {
     setRScore((prev) => Math.max(0, prev - 1));
   }, []);
+
+  useEffect(() => {
+    if (lScore > 0) localStorage.setItem(lStorageKey, `${lScore}`);
+  }, [lScore]);
+
+  useEffect(() => {
+    if (rScore > 0) localStorage.setItem(rStorageKey, `${rScore}`);
+  }, [rScore]);
 
   const value = {
     lScore,
