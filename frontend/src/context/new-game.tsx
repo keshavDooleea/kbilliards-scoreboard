@@ -8,6 +8,7 @@ interface INewGameContextType {
   whoBreaks: string;
   doesLBreak: boolean;
   startGame: () => void;
+  resetGame: () => void;
   toggleWhoBreaks: () => void;
   setWhoBreaks: (isLeft: boolean) => void;
 }
@@ -22,7 +23,7 @@ const NewGameContext = createContext<INewGameContextType | null>(null);
 
 export function NewGameProvider({ children }: IChildrenProviderProps) {
   const { lName, rName } = usePlayerName();
-  const { set, getNum, getBool } = useLocalStorage();
+  const { set, getNum, getBool, rm } = useLocalStorage();
 
   const whoBreaksKey = 'leftBreaks';
   const gameStateKey = 'state';
@@ -32,6 +33,12 @@ export function NewGameProvider({ children }: IChildrenProviderProps) {
 
   const [state, setState] = useState(initialState);
   const [doesLBreak, setDoesLBreak] = useState<boolean | null>(initialBreak);
+
+  const resetGame = () => {
+    rm(whoBreaksKey);
+    rm(gameStateKey);
+    setState(GameState.NEW);
+  };
 
   const setWhoBreaks = (isLeft: boolean) => {
     setState(GameState.SELECTING);
@@ -64,6 +71,7 @@ export function NewGameProvider({ children }: IChildrenProviderProps) {
     doesLBreak: doesLBreak ?? false,
     setWhoBreaks,
     startGame,
+    resetGame,
     toggleWhoBreaks,
   };
 
