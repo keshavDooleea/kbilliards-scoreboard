@@ -8,9 +8,9 @@ export function Scoreboard() {
 
   return (
     <div id='scoreboard-container'>
-      <Board color={lColor} score={lScore} name='Keshav' />
+      <Board color={lColor} score={lScore} name='Keshav' isLeft={true} />
       <div className='separator'></div>
-      <Board color={rColor} score={rScore} name='Varoun' />
+      <Board color={rColor} score={rScore} name='Varoun' isLeft={false} />
     </div>
   );
 }
