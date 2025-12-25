@@ -1,31 +1,7 @@
-#title-container {
-  position: absolute;
-  top: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: var(--bkgColor);
-  border-radius: 6px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), 0 1.5px 8px rgba(0, 0, 0, 0.18);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Chewy', system-ui;
-  color: #c1c1c1;
-  letter-spacing: 1px;
-  font-size: 1.5rem;
-  padding: 10px 30px;
-  opacity: 0.95;
-  user-select: none;
-  z-index: 1;
-}
-
 .who-breaks-board {
-  width: 50%;
-  flex: 1;
   cursor: pointer;
   transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
   overflow: hidden;
 }
 

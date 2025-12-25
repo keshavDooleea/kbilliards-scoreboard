@@ -1,26 +1,49 @@
-import { createContext, useContext, ReactNode, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import { useBoardScore } from './board-score';
+import { IChildrenProviderProps, usePlayerName } from '.';
 
 interface INewGameContextType {
   isNew: boolean;
+  isSelectingBalls: boolean;
+  whoBreaks: string;
+  setWhoBreaks: (isLeft: boolean) => void;
   startGame: () => void;
 }
 
-interface INewGameProviderProps {
-  children: ReactNode;
+enum GameState {
+  NEW,
+  SELECTING,
+  STARTED,
 }
 
 const NewGameContext = createContext<INewGameContextType | null>(null);
 
-export function NewGameProvider({ children }: INewGameProviderProps) {
+export function NewGameProvider({ children }: IChildrenProviderProps) {
   const { isBothNil } = useBoardScore();
-  const [isNew, setIsNew] = useState(isBothNil());
+  const { lName, rName } = usePlayerName();
 
-  const startGame = () => {
-    setIsNew(false);
+  const [state, setState] = useState(
+    isBothNil() ? GameState.NEW : GameState.STARTED
+  );
+  const [doesLBreak, setDoesLBreak] = useState<boolean | null>(null);
+
+  const setWhoBreaks = (isLeft: boolean) => {
+    setDoesLBreak(isLeft);
+    setState(1);
   };
 
-  const value = { isNew, startGame };
+  const startGame = () => setState(GameState.STARTED);
+
+  const isNew = state === GameState.NEW;
+  const isSelectingBalls = state === GameState.SELECTING;
+
+  const value = {
+    isNew,
+    isSelectingBalls,
+    setWhoBreaks,
+    startGame,
+    whoBreaks: doesLBreak ? lName : rName,
+  };
 
   return (
     <NewGameContext.Provider value={value}>{children}</NewGameContext.Provider>
