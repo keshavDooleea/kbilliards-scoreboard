@@ -8,16 +8,21 @@
   --bkgColor: #171717;
 }
 
-body {
+body,
+.board-container {
   width: 100vw;
+  width: 100dvw;
+
   height: 100vh;
+  height: 100dvh;
+}
+
+body {
   background-color: var(--bkgColor);
   overflow: hidden;
 }
 
 .board-container {
-  width: 100vw;
-  height: 100vh;
   display: flex;
 }
 
