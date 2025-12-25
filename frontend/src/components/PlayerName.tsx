@@ -15,6 +15,7 @@ export function PlayerName({ name, onNameChanged }: IPlayerNameProps) {
       contentEditable
       onInput={handleInput}
       suppressContentEditableWarning={true}
+      spellCheck={false}
     />
   );
 }
