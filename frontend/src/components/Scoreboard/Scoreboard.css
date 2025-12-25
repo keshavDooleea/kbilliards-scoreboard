@@ -41,3 +41,10 @@
 .board.swiping .board-score {
   transform: scale(1.05);
 }
+
+.breaking-text {
+  margin-top: 8px;
+  font-family: 'Finger Paint', sans-serif;
+  font-weight: bold;
+  filter: brightness(60%);
+}

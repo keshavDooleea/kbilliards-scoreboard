@@ -6,8 +6,9 @@ interface INewGameContextType {
   isNew: boolean;
   isSelectingBalls: boolean;
   whoBreaks: string;
-  setWhoBreaks: (isLeft: boolean) => void;
+  doesLBreak: boolean;
   startGame: () => void;
+  setWhoBreaks: (isLeft: boolean) => void;
 }
 
 enum GameState {
@@ -52,6 +53,7 @@ export function NewGameProvider({ children }: IChildrenProviderProps) {
     setWhoBreaks,
     startGame,
     whoBreaks: doesLBreak ? lName : rName,
+    doesLBreak: doesLBreak ?? false,
   };
 
   return (
