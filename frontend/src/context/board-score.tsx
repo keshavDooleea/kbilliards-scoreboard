@@ -4,6 +4,7 @@ import {
   useState,
   useCallback,
   useEffect,
+  useRef,
 } from 'react';
 import { useScoreStorage } from '../hooks';
 import { IChildrenProviderProps, useNewGameContext } from '.';
@@ -33,6 +34,7 @@ export function BoardScoreProvider({ children }: IChildrenProviderProps) {
 
   const [lScore, setLScore] = useState<number>(getLScore());
   const [rScore, setRScore] = useState<number>(getRScore());
+  const prevScoresRef = useRef({ lScore: getLScore(), rScore: getRScore() });
 
   const incrementLeft = useCallback(() => {
     setLScore((prev) => {
@@ -72,11 +74,19 @@ export function BoardScoreProvider({ children }: IChildrenProviderProps) {
     clearScoreStorage();
     setLScore(0);
     setRScore(0);
+    prevScoresRef.current = { lScore: 0, rScore: 0 };
   }, [clearScoreStorage]);
 
   useEffect(() => {
-    if (lScore > 0 || rScore > 0) toggleWhoBreaks();
-  }, [lScore, rScore]);
+    const prevScores = prevScoresRef.current;
+    const hasScoresChanged =
+      prevScores.lScore !== lScore || prevScores.rScore !== rScore;
+
+    if (hasScoresChanged && (lScore > 0 || rScore > 0)) {
+      toggleWhoBreaks();
+      prevScoresRef.current = { lScore, rScore };
+    }
+  }, [lScore, rScore, toggleWhoBreaks]);
 
   const value = {
     lScore,
