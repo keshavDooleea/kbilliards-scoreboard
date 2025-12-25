@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/kbilliards-scoreboard/static/css/main.736d2aed.css",
+    "main.css": "/kbilliards-scoreboard/static/css/main.f6b26030.css",
     "main.js": "/kbilliards-scoreboard/static/js/main.680fd97d.js",
     "static/js/453.20359781.chunk.js": "/kbilliards-scoreboard/static/js/453.20359781.chunk.js",
     "index.html": "/kbilliards-scoreboard/index.html",
-    "main.736d2aed.css.map": "/kbilliards-scoreboard/static/css/main.736d2aed.css.map",
+    "main.f6b26030.css.map": "/kbilliards-scoreboard/static/css/main.f6b26030.css.map",
     "main.680fd97d.js.map": "/kbilliards-scoreboard/static/js/main.680fd97d.js.map",
     "453.20359781.chunk.js.map": "/kbilliards-scoreboard/static/js/453.20359781.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.736d2aed.css",
+    "static/css/main.f6b26030.css",
     "static/js/main.680fd97d.js"
   ]
 }
