@@ -77,9 +77,15 @@ body {
   font-family: 'Chewy', system-ui;
   color: #c1c1c1;
   letter-spacing: 1px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   padding: 10px 22px;
   opacity: 0.95;
   user-select: none;
   z-index: 1;
+}
+
+@media screen and (max-width: 700px) {
+  #title-container {
+    font-size: 1rem;
+  }
 }
