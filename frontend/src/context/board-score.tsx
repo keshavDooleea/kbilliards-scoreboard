@@ -4,7 +4,6 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect,
 } from 'react';
 import { useScoreStorage } from '../hooks';
 
@@ -36,30 +35,38 @@ export function BoardScoreProvider({ children }: IBoardScoreProviderProps) {
   const [rScore, setRScore] = useState<number>(getRScore());
 
   const incrementLeft = useCallback(() => {
-    setLScore((prev) => prev + 1);
+    setLScore((prev) => {
+      const newScore = prev + 1;
+      saveLScore(newScore);
+      return newScore;
+    });
   }, []);
 
   const decrementLeft = useCallback(() => {
-    setLScore((prev) => Math.max(0, prev - 1));
+    setLScore((prev) => {
+      const newScore = Math.max(0, prev - 1);
+      saveLScore(newScore);
+      return newScore;
+    });
   }, []);
 
   const incrementRight = useCallback(() => {
-    setRScore((prev) => prev + 1);
+    setRScore((prev) => {
+      const newScore = prev + 1;
+      saveRScore(newScore);
+      return newScore;
+    });
   }, []);
 
   const decrementRight = useCallback(() => {
-    setRScore((prev) => Math.max(0, prev - 1));
+    setRScore((prev) => {
+      const newScore = Math.max(0, prev - 1);
+      saveRScore(newScore);
+      return newScore;
+    });
   }, []);
 
   const isBothNil = () => lScore === rScore;
-
-  useEffect(() => {
-    if (lScore > 0) saveLScore(lScore);
-  }, [lScore]);
-
-  useEffect(() => {
-    if (rScore > 0) saveRScore(rScore);
-  }, [rScore]);
 
   const value = {
     lScore,
