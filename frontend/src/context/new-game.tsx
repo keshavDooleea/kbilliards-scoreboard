@@ -41,11 +41,10 @@ export function NewGameProvider({ children }: IChildrenProviderProps) {
   };
 
   const setWhoBreaks = (isLeft: boolean) => {
-    setState(GameState.SELECTING);
-    set(gameStateKey, GameState.SELECTING);
-
     setDoesLBreak(isLeft);
     set(whoBreaksKey, isLeft);
+
+    startGame();
   };
 
   const toggleWhoBreaks = (): void => {
