@@ -19,7 +19,9 @@ export function Board({ color, name, score, isLeft = false }: IBoard) {
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}>
-      <h1 className='board-name'>{name}</h1>
+      <div className='board-name' contentEditable>
+        {name}
+      </div>
       <p className='board-score'>{score}</p>
     </div>
   );
