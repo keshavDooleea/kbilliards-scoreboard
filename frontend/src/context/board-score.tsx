@@ -15,6 +15,7 @@ interface IBoardScoreContextType {
   decrementLeft: () => void;
   incrementRight: () => void;
   decrementRight: () => void;
+  isBothNil: () => boolean;
 }
 
 interface IBoardScoreProviderProps {
@@ -50,6 +51,8 @@ export function BoardScoreProvider({ children }: IBoardScoreProviderProps) {
     setRScore((prev) => Math.max(0, prev - 1));
   }, []);
 
+  const isBothNil = () => lScore === rScore;
+
   useEffect(() => {
     if (lScore > 0) saveLScore(lScore);
   }, [lScore]);
@@ -65,6 +68,7 @@ export function BoardScoreProvider({ children }: IBoardScoreProviderProps) {
     decrementLeft,
     incrementRight,
     decrementRight,
+    isBothNil,
   };
 
   return (
