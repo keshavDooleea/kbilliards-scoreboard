@@ -3,6 +3,7 @@ import { useBoardScore } from './board-score';
 
 interface INewGameContextType {
   isNew: boolean;
+  startGame: () => void;
 }
 
 interface INewGameProviderProps {
@@ -15,7 +16,11 @@ export function NewGameProvider({ children }: INewGameProviderProps) {
   const { isBothNil } = useBoardScore();
   const [isNew, setIsNew] = useState(isBothNil());
 
-  const value = { isNew };
+  const startGame = () => {
+    setIsNew(false);
+  };
+
+  const value = { isNew, startGame };
 
   return (
     <NewGameContext.Provider value={value}>{children}</NewGameContext.Provider>

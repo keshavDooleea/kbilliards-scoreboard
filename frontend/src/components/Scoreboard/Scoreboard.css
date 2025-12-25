@@ -2,7 +2,6 @@
   touch-action: pan-y;
   cursor: grab;
   transition: transform 0.1s ease-out;
-  user-select: none;
 }
 
 .board:active {
