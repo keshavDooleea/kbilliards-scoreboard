@@ -8,6 +8,7 @@ interface INewGameContextType {
   whoBreaks: string;
   doesLBreak: boolean;
   startGame: () => void;
+  toggleWhoBreaks: () => void;
   setWhoBreaks: (isLeft: boolean) => void;
 }
 
@@ -21,15 +22,16 @@ const NewGameContext = createContext<INewGameContextType | null>(null);
 
 export function NewGameProvider({ children }: IChildrenProviderProps) {
   const { lName, rName } = usePlayerName();
-  const { set, getNum } = useLocalStorage();
+  const { set, getNum, getBool } = useLocalStorage();
 
   const whoBreaksKey = 'leftBreaks';
   const gameStateKey = 'state';
 
   const initialState = getNum(gameStateKey);
+  const initialBreak = getBool(whoBreaksKey);
 
   const [state, setState] = useState(initialState);
-  const [doesLBreak, setDoesLBreak] = useState<boolean | null>(null);
+  const [doesLBreak, setDoesLBreak] = useState<boolean | null>(initialBreak);
 
   const setWhoBreaks = (isLeft: boolean) => {
     setState(GameState.SELECTING);
@@ -37,6 +39,14 @@ export function NewGameProvider({ children }: IChildrenProviderProps) {
 
     setDoesLBreak(isLeft);
     set(whoBreaksKey, isLeft);
+  };
+
+  const toggleWhoBreaks = (): void => {
+    setDoesLBreak((old) => {
+      const newBreak = !old;
+      set(whoBreaksKey, newBreak);
+      return newBreak;
+    });
   };
 
   const startGame = () => {
@@ -50,10 +60,11 @@ export function NewGameProvider({ children }: IChildrenProviderProps) {
   const value = {
     isNew,
     isSelectingBalls,
-    setWhoBreaks,
-    startGame,
     whoBreaks: doesLBreak ? lName : rName,
     doesLBreak: doesLBreak ?? false,
+    setWhoBreaks,
+    startGame,
+    toggleWhoBreaks,
   };
 
   return (

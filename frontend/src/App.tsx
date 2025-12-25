@@ -9,13 +9,13 @@ import { Main } from './components';
 function App() {
   return (
     <PlayerNameProvider>
-      <BoardScoreProvider>
-        <NewGameProvider>
+      <NewGameProvider>
+        <BoardScoreProvider>
           <BoardColorProvider>
             <Main />
           </BoardColorProvider>
-        </NewGameProvider>
-      </BoardScoreProvider>
+        </BoardScoreProvider>
+      </NewGameProvider>
     </PlayerNameProvider>
   );
 }

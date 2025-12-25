@@ -1,6 +1,12 @@
-import { createContext, useContext, useState, useCallback } from 'react';
+import {
+  createContext,
+  useContext,
+  useState,
+  useCallback,
+  useEffect,
+} from 'react';
 import { useScoreStorage } from '../hooks';
-import { IChildrenProviderProps } from '.';
+import { IChildrenProviderProps, useNewGameContext } from '.';
 
 interface IBoardScoreContextType {
   lScore: number;
@@ -15,6 +21,7 @@ interface IBoardScoreContextType {
 const BoardScoreContext = createContext<IBoardScoreContextType | null>(null);
 
 export function BoardScoreProvider({ children }: IChildrenProviderProps) {
+  const { toggleWhoBreaks } = useNewGameContext();
   const {
     getLScore,
     getRScore,
@@ -58,6 +65,10 @@ export function BoardScoreProvider({ children }: IChildrenProviderProps) {
   }, []);
 
   const isBothNil = () => lScore === rScore;
+
+  useEffect(() => {
+    if (lScore > 0 || rScore > 0) toggleWhoBreaks();
+  }, [lScore, rScore]);
 
   const value = {
     lScore,

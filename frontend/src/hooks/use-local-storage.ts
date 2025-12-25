@@ -9,7 +9,12 @@ export function useLocalStorage() {
     return value ? +value : 0;
   };
 
+  const getBool = (key: string): boolean => {
+    const value = get(key);
+    return value === 'true';
+  };
+
   const rm = (key: string): void => localStorage.removeItem(key);
 
-  return { get, getNum, set, rm };
+  return { get, getNum, set, rm, getBool };
 }
