@@ -4,24 +4,3 @@
     box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
 }
-
-.who-breaks-board.clicked {
-  animation: clickPulse 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@keyframes clickPulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.98);
-    opacity: 0.9;
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.who-breaks-board.clicked .board-name {
-  transform: scale(0.95);
-}

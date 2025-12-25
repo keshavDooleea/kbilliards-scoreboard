@@ -37,6 +37,27 @@ body {
   user-select: none;
 }
 
+.board.clicked {
+  animation: clickPulse 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes clickPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.board.clicked .board-name {
+  transform: scale(0.95);
+}
+
 #title-container {
   position: absolute;
   top: 50px;
