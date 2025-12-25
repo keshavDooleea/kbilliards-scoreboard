@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from 'react';
-import { useBoardScore } from './board-score';
 import { IChildrenProviderProps, usePlayerName } from '.';
+import { useLocalStorage } from '../hooks';
 
 interface INewGameContextType {
   isNew: boolean;
@@ -19,20 +19,29 @@ enum GameState {
 const NewGameContext = createContext<INewGameContextType | null>(null);
 
 export function NewGameProvider({ children }: IChildrenProviderProps) {
-  const { isBothNil } = useBoardScore();
   const { lName, rName } = usePlayerName();
+  const { set, getNum } = useLocalStorage();
 
-  const [state, setState] = useState(
-    isBothNil() ? GameState.NEW : GameState.STARTED
-  );
+  const whoBreaksKey = 'leftBreaks';
+  const gameStateKey = 'state';
+
+  const initialState = getNum(gameStateKey);
+
+  const [state, setState] = useState(initialState);
   const [doesLBreak, setDoesLBreak] = useState<boolean | null>(null);
 
   const setWhoBreaks = (isLeft: boolean) => {
+    setState(GameState.SELECTING);
+    set(gameStateKey, GameState.SELECTING);
+
     setDoesLBreak(isLeft);
-    setState(1);
+    set(whoBreaksKey, isLeft);
   };
 
-  const startGame = () => setState(GameState.STARTED);
+  const startGame = () => {
+    setState(GameState.STARTED);
+    set(gameStateKey, GameState.STARTED);
+  };
 
   const isNew = state === GameState.NEW;
   const isSelectingBalls = state === GameState.SELECTING;

@@ -1,5 +1,5 @@
 export function useLocalStorage() {
-  const set = (key: string, value: number | string): void =>
+  const set = (key: string, value: number | string | boolean): void =>
     localStorage.setItem(key, `${value}`);
 
   const get = (key: string): string | null => localStorage.getItem(key);
@@ -9,5 +9,7 @@ export function useLocalStorage() {
     return value ? +value : 0;
   };
 
-  return { get, getNum, set };
+  const rm = (key: string): void => localStorage.removeItem(key);
+
+  return { get, getNum, set, rm };
 }
