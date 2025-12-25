@@ -84,7 +84,13 @@ body {
   z-index: 1;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  #title-container {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (orientation: portrait) and (max-width: 700px) {
   #title-container {
     font-size: 1rem;
   }
