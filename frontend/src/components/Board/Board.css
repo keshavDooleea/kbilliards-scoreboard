@@ -8,10 +8,10 @@
 }
 
 .board-name {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Chewy', system-ui;
   color: rgba(0, 0, 0, 0.4);
   letter-spacing: 1.5px;
-  font-size: 2rem;
+  font-size: 3.5em;
   user-select: none;
 }
 
@@ -22,5 +22,5 @@
   margin: 0;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2);
   user-select: none;
-  color: rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.5);
 }
