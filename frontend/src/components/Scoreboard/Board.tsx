@@ -1,4 +1,5 @@
-import { useBoardSwipe, usePlayerName } from '../../hooks';
+import { useBoardSwipe } from '../../hooks';
+import { PlayerName } from '../PlayerName';
 
 interface IBoard {
   color: string;
@@ -12,8 +13,6 @@ export function Board({ color, name, score, isLeft, onNameChanged }: IBoard) {
   const { isSwiping, onTouchStart, onTouchMove, onTouchEnd } =
     useBoardSwipe(isLeft);
 
-  const { nameRef, handleInput } = usePlayerName({ name, onNameChanged });
-
   return (
     <div
       className={`board ${isSwiping ? 'swiping' : ''}`}
@@ -21,12 +20,8 @@ export function Board({ color, name, score, isLeft, onNameChanged }: IBoard) {
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}>
-      <div
-        ref={nameRef}
-        className='board-name'
-        contentEditable
-        onInput={handleInput}
-        suppressContentEditableWarning={true}></div>
+      <PlayerName name={name} onNameChanged={onNameChanged} />
+
       <p className='board-score'>{score}</p>
     </div>
   );

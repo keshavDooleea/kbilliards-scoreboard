@@ -1,4 +1,5 @@
-import { useHandleClick, usePlayerName } from '../../hooks';
+import { useHandleClick } from '../../hooks';
+import { PlayerName } from '../PlayerName';
 
 interface IBoard {
   color: string;
@@ -9,20 +10,13 @@ interface IBoard {
 
 export function Board({ color, name, onClick, onNameChanged }: IBoard) {
   const { isClicked, handleClick } = useHandleClick({ onClick });
-  const { nameRef, handleInput } = usePlayerName({ name, onNameChanged });
 
   return (
     <div
       className={`who-breaks-board board ${isClicked ? 'clicked' : ''}`}
       style={{ backgroundColor: color }}
       onDoubleClick={handleClick}>
-      <div
-        ref={nameRef}
-        className='board-name'
-        contentEditable
-        onInput={handleInput}
-        suppressContentEditableWarning={true}
-      />
+      <PlayerName name={name} onNameChanged={onNameChanged} />
     </div>
   );
 }
