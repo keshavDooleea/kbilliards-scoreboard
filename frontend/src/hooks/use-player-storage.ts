@@ -6,8 +6,8 @@ export function usePlayerStorage() {
   const lStorageKey = 'lName';
   const rStorageKey = 'rName';
 
-  const getLName = (): string => get(lStorageKey) ?? 'k';
-  const getRName = (): string => get(rStorageKey) ?? 'v';
+  const getLName = (): string => get(lStorageKey) ?? 'p1';
+  const getRName = (): string => get(rStorageKey) ?? 'p2';
 
   const setLName = (value: string) => set(lStorageKey, value);
   const setRName = (value: string) => set(rStorageKey, value);
