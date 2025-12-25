@@ -4,17 +4,15 @@ import {
   useNewGameContext,
   usePlayerName,
 } from '../../context';
-import { useScoreStorage } from '../../hooks';
 import { TitleBar } from '../TitleBar';
 import { Board } from './Board';
 import './Scoreboard.css';
 
 export function Scoreboard() {
   const { lColor, rColor } = useBoardColor();
-  const { lScore, rScore } = useBoardScore();
+  const { lScore, rScore, resetScores } = useBoardScore();
   const { lName, rName, updateLName, updateRName } = usePlayerName();
 
-  const { resetScores } = useScoreStorage();
   const { resetGame } = useNewGameContext();
 
   const currentGameCount = lScore + rScore + 1;

@@ -16,6 +16,7 @@ interface IBoardScoreContextType {
   incrementRight: () => void;
   decrementRight: () => void;
   isBothNil: () => boolean;
+  resetScores: () => void;
 }
 
 const BoardScoreContext = createContext<IBoardScoreContextType | null>(null);
@@ -27,6 +28,7 @@ export function BoardScoreProvider({ children }: IChildrenProviderProps) {
     getRScore,
     setLScore: saveLScore,
     setRScore: saveRScore,
+    resetScores: clearScoreStorage,
   } = useScoreStorage();
 
   const [lScore, setLScore] = useState<number>(getLScore());
@@ -66,6 +68,12 @@ export function BoardScoreProvider({ children }: IChildrenProviderProps) {
 
   const isBothNil = () => lScore === rScore;
 
+  const resetScores = useCallback(() => {
+    clearScoreStorage();
+    setLScore(0);
+    setRScore(0);
+  }, [clearScoreStorage]);
+
   useEffect(() => {
     if (lScore > 0 || rScore > 0) toggleWhoBreaks();
   }, [lScore, rScore]);
@@ -78,6 +86,7 @@ export function BoardScoreProvider({ children }: IChildrenProviderProps) {
     incrementRight,
     decrementRight,
     isBothNil,
+    resetScores,
   };
 
   return (
