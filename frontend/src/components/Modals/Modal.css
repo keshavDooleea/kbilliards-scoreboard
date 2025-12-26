@@ -1,0 +1,89 @@
+.modal-bkg {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(3px);
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-container {
+  padding: 30px 50px;
+  min-width: 300px;
+  max-width: 80vw;
+  max-height: 90vh;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 8px 14px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-title {
+  font-size: 1.75rem;
+  color: #f1f1f1;
+  text-align: center;
+}
+
+.modal-body {
+  text-align: center;
+}
+
+.modal-actions {
+  gap: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.modal-actions button {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 100px;
+  font-family: 'Chewy', system-ui;
+  letter-spacing: 1.4px;
+}
+
+.modal-actions button:first-child {
+  background-color: #2169ff;
+  color: white;
+}
+
+.modal-actions button:last-child {
+  background-color: var(--bkgColor);
+  filter: brightness(150%);
+  color: #c1c1c1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-actions button:hover {
+  filter: brightness(120%);
+}

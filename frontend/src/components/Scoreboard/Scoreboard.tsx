@@ -1,26 +1,20 @@
-import {
-  useBoardColor,
-  useBoardScore,
-  useNewGameContext,
-  usePlayerName,
-} from '../../context';
+import { useState } from 'react';
+import { useBoardColor, useBoardScore, usePlayerName } from '../../context';
 import { TitleBar } from '../TitleBar';
 import { Board } from './Board';
+import { RestartModal } from '../Modals';
 import './Scoreboard.css';
 
 export function Scoreboard() {
   const { lColor, rColor } = useBoardColor();
-  const { lScore, rScore, resetScores } = useBoardScore();
+  const { lScore, rScore } = useBoardScore();
   const { lName, rName, updateLName, updateRName } = usePlayerName();
-
-  const { resetGame } = useNewGameContext();
+  const [showRestartModal, setShowRestartModal] = useState<boolean>(false);
 
   const currentGameCount = lScore + rScore + 1;
 
-  const onRestart = () => {
-    resetScores();
-    resetGame();
-  };
+  const onRestartClicked = () => setShowRestartModal(true);
+  const onRestartModalClose = () => setShowRestartModal(false);
 
   return (
     <div className='board-container'>
@@ -30,7 +24,7 @@ export function Scoreboard() {
         src='icons/restart.svg'
         alt='restart-icon'
         className='restart-icon'
-        onClick={onRestart}
+        onClick={onRestartClicked}
       />
 
       <Board
@@ -48,6 +42,8 @@ export function Scoreboard() {
         isLeft={false}
         onNameChanged={updateRName}
       />
+
+      {showRestartModal && <RestartModal onClose={onRestartModalClose} />}
     </div>
   );
 }
