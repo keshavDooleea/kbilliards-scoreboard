@@ -27,7 +27,7 @@ export function Board({ color, name, score, isLeft, onNameChanged }: IBoard) {
       <small
         className='breaking-text'
         style={{ opacity: isLeft === doesLBreak ? 1 : 0, color }}>
-        Breaking
+        breaks
       </small>
 
       <p className='board-score'>{score}</p>
