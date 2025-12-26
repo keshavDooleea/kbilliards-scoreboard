@@ -1,20 +1,22 @@
-import { useState } from 'react';
 import { useBoardColor, useBoardScore, usePlayerName } from '../../context';
 import { TitleBar } from '../TitleBar';
 import { Board } from './Board';
 import { RestartModal } from '../Modals';
 import './Scoreboard.css';
+import { useModal } from '../../hooks';
 
 export function Scoreboard() {
   const { lColor, rColor } = useBoardColor();
   const { lScore, rScore } = useBoardScore();
   const { lName, rName, updateLName, updateRName } = usePlayerName();
-  const [showRestartModal, setShowRestartModal] = useState<boolean>(false);
+
+  const {
+    showModal: showRestartModal,
+    onModalClicked: onRestartClicked,
+    onModalClose: onRestartModalClose,
+  } = useModal();
 
   const currentGameCount = lScore + rScore + 1;
-
-  const onRestartClicked = () => setShowRestartModal(true);
-  const onRestartModalClose = () => setShowRestartModal(false);
 
   return (
     <div className='board-container'>

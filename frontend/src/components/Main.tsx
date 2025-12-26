@@ -1,9 +1,9 @@
-import { useState } from 'react';
 import { Scoreboard } from './Scoreboard/Scoreboard';
 import { WhoBreaks } from './WhoBreaks/WhoBreaks';
 import { SelectBalls } from './SelectBalls/SelectBalls';
 import { useNewGameContext } from '../context';
 import { InstructionsModal } from './Modals';
+import { useModal } from '../hooks';
 
 function MainComponent() {
   const { isNew, isSelectingBalls } = useNewGameContext();
@@ -20,11 +20,11 @@ function MainComponent() {
 }
 
 export function Main() {
-  const [showInstructionsModal, setShowInstructionsModal] =
-    useState<boolean>(false);
-
-  const onInstructionsModalClicked = () => setShowInstructionsModal(true);
-  const onInstructionsModalClose = () => setShowInstructionsModal(false);
+  const {
+    showModal: showInstructionsModal,
+    onModalClicked: onInstructionsModalClicked,
+    onModalClose: onInstructionsModalClose,
+  } = useModal();
 
   return (
     <>
