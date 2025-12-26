@@ -8,7 +8,7 @@ export function InstructionsModal({ onClose }: CommonModalProps) {
       <h2 className='modal-title'>Instructions</h2>
       <div className='modal-body instructions-body'>
         <ul>
-          <li>Tap on a player name (p1 and p2 by default) to modify.</li>
+          <li>Tap on a player's name (p1 and p2 by default) to modify.</li>
           <li>
             On "Who breaks?" screen, double tap on either left or right panel to
             select who breaks first.
