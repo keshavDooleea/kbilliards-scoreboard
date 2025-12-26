@@ -54,6 +54,10 @@
   animation-delay: 0.2s;
 }
 
+.score-board .board-name {
+  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 @media screen and (orientation: landscape) and (max-height: 500px) {
   .board-name {
     font-size: 2em;

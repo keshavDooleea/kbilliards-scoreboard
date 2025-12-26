@@ -18,7 +18,7 @@ export function Board({ color, name, score, isLeft, onNameChanged }: IBoard) {
 
   return (
     <div
-      className={`board ${isSwiping ? 'swiping' : ''}`}
+      className={`board score-board ${isSwiping ? 'swiping' : ''}`}
       style={{ backgroundColor: color }}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
