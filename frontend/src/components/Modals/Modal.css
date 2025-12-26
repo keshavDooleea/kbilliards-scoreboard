@@ -22,6 +22,8 @@
 .modal-container {
   padding: 30px 50px;
   min-width: 300px;
+  max-width: 80dvw;
+  max-height: 90dvh;
   max-width: 80vw;
   max-height: 90vh;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 8px 14px rgba(0, 0, 0, 0.4);
@@ -86,4 +88,20 @@
 
 .modal-actions button:hover {
   filter: brightness(120%);
+}
+
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .modal-container {
+    gap: 1.5rem;
+  }
+
+  .instructions-body li {
+    margin: 3px 0;
+  }
+}
+
+@media screen and (orientation: portrait) and (max-width: 700px) {
+  .instructions-body li {
+    margin: 3px 0;
+  }
 }

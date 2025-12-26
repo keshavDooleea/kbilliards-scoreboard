@@ -106,6 +106,21 @@ body {
   transform: scale(1.02);
 }
 
+@keyframes restartLeft {
+  0% {
+    left: -40px;
+    opacity: 0;
+  }
+  70% {
+    left: 15px;
+    opacity: 1;
+  }
+  100% {
+    left: 10px;
+    opacity: 0.7;
+  }
+}
+
 @media screen and (orientation: landscape) and (max-height: 500px) {
   #title-container {
     font-size: 0.8rem;

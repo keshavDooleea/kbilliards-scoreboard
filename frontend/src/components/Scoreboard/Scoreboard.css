@@ -49,22 +49,9 @@
 }
 
 .restart-icon {
-  top: 50px;
-}
-
-@keyframes restartLeft {
-  0% {
-    left: -40px;
-    opacity: 0;
-  }
-  70% {
-    left: 15px;
-    opacity: 1;
-  }
-  100% {
-    left: 10px;
-    opacity: 0.7;
-  }
+  top: 45px;
+  opacity: 0;
+  animation-delay: 0.2s;
 }
 
 @media screen and (orientation: landscape) and (max-height: 500px) {
