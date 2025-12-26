@@ -23,7 +23,7 @@ export function Scoreboard() {
       <img
         src='icons/restart.svg'
         alt='restart-icon'
-        className='restart-icon'
+        className='icon restart-icon'
         onClick={onRestartClicked}
       />
 

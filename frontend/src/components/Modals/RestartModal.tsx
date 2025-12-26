@@ -1,12 +1,9 @@
 import { useBoardScore, useNewGameContext } from '../../context';
 import { BaseModal } from './BaseModal';
+import { CommonModalProps } from '.';
 import './Modal.css';
 
-interface RestartModalProps {
-  onClose: () => void;
-}
-
-export function RestartModal({ onClose }: RestartModalProps) {
+export function RestartModal({ onClose }: CommonModalProps) {
   const { resetScores } = useBoardScore();
   const { resetGame } = useNewGameContext();
 

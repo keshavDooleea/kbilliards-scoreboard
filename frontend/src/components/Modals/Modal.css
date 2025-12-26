@@ -50,7 +50,7 @@
   text-align: center;
 }
 
-.modal-body {
+.modal-body:not(.instructions-body) {
   text-align: center;
 }
 

@@ -7,7 +7,8 @@ Visit at [https://keshavdooleea.github.io/kbilliards-scoreboard](https://keshavd
 
 ## How to use?
 
-1. Click on a player name (p1 or p2 by default) to set or update players names.
-1. On "Who breaks?" screen, double click on a player's panel or board to select who is breaking.
-1. When the game starts, swipe up or down to update score.
-1. Click on the restart icon on the top left to restart the game.
+1. Tap on a player name (p1 and p2 by default) to modify.
+1. On "Who breaks?" screen, double tap on either left or right panel to
+   select who breaks first.
+1. When the game starts, swipe up or down on a panel to update score.
+1. Tap on the restart icon on the top left to start a new match.
